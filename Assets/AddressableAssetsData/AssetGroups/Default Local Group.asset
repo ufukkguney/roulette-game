@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 89d21b1894ad1ed4c83744a98b658b5d
+  m_SerializeEntries:
+  - m_GUID: 0b8d966f6bf53aa459b5b3953f7eecb7
+    m_Address: Assets/Prefabs/CircleRow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 832f5bd7b50b673469b5e2fde3d36fdc
+    m_Address: Assets/Prefabs/CircleGlow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45a559f3ddb031745b0491cbd81648b1
+    m_Address: Assets/Prefabs/WalletItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 54817c7430f0a3f4d9ef5416d1c69e53, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 38279fe5e6499b74f932a9c2d20ff005, type: 2}
+    - {fileID: 11400000, guid: b000e5e52d39b0a4b8da0d3f5b3e2fb3, type: 2}
