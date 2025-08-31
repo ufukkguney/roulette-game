@@ -35,14 +35,12 @@ public struct ItemEarnedEventArgs
 {
     public Sprite itemSprite;
     public string itemType;
-    public RectTransform target;
     public bool hasUnSelectItem;
 
-    public ItemEarnedEventArgs(Sprite itemSprite, string itemType, RectTransform target, bool hasUnSelectItem)
+    public ItemEarnedEventArgs(Sprite itemSprite, string itemType, bool hasUnSelectItem)
     {
         this.itemSprite = itemSprite;
         this.itemType = itemType;
-        this.target = target;
         this.hasUnSelectItem = hasUnSelectItem;
     }
 }

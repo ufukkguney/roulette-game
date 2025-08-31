@@ -7,17 +7,20 @@ public class GameLifetimeScope : LifetimeScope
 
     protected override void Configure(IContainerBuilder builder)
     {
-        builder.RegisterInstance(rewardSprites);
+        builder.RegisterEntryPoint<GameLifecycleManager>();
+
         builder.Register<ItemFactory>(Lifetime.Singleton);
+        builder.Register<ItemManager>(Lifetime.Singleton);
 
         builder.Register<WalletModel>(Lifetime.Singleton);
         builder.Register<WalletController>(Lifetime.Singleton);
         builder.RegisterComponentInHierarchy<WalletView>();
 
         builder.RegisterComponentInHierarchy<BarbecueParty>();
+        builder.Register<GameSequenceManager>(Lifetime.Singleton);
+
         builder.RegisterComponentInHierarchy<HomeScreen>();
 
-        builder.RegisterEntryPoint<GameLifecycleManager>();
-
+        builder.RegisterInstance(rewardSprites);
     }
 }

@@ -91,7 +91,6 @@ public class ObjectPool<T> where T : Component
 
     public void Return(T comp)
     {
-        // comp.transform.SetParent(parent);
         if (comp is IPoolable poolable)
         {
             poolable.ResetPoolObject();

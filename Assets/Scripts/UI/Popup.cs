@@ -8,7 +8,7 @@ public class Popup : MonoBehaviour
     [SerializeField] private Image popupImage;
     [SerializeField] private TextMeshProUGUI popupText;
     [SerializeField] private Button closeButton;
-    private RectTransform target;//this set from minigame ui because we dont need new transform we can use walletbutton transform from minigameUI
+    [SerializeField] private RectTransform target;
     private Vector3 startPopupImagePos;
     private bool isResetGame;
     public void Initialize()
@@ -18,10 +18,9 @@ public class Popup : MonoBehaviour
 
         startPopupImagePos = popupImage.rectTransform.anchoredPosition;
     }
-    public void Set(Sprite image, string text, RectTransform target, bool hasUnSelectItem)
+    public void Set(Sprite image, string text, bool hasUnSelectItem)
     {
         popupImage.sprite = image;
-        this.target = target;
 
         if (!hasUnSelectItem)
         {

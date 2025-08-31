@@ -5,7 +5,7 @@ public class MiniGameUI : MonoBehaviour
 {
     [SerializeField] private Button closeButton;
     [SerializeField] private Button playButton;
-    public Button walletButton;
+    [SerializeField] private Button walletButton;
     [SerializeField] private Popup genericPopup;
 
     public void Initialize()
@@ -16,7 +16,7 @@ public class MiniGameUI : MonoBehaviour
         playButton.onClick.AddListener(OnPlayButtonClicked);
         walletButton.onClick.AddListener(OnWalletButtonClicked);
 
-    EventManager.OnItemEarned += OnItemEarned;
+        EventManager.OnItemEarned += OnItemEarned;
     }
 
     private void OnCloseButtonClicked()
@@ -26,18 +26,21 @@ public class MiniGameUI : MonoBehaviour
 
     private void OnPlayButtonClicked()
     {
+        playButton.interactable = false;
         EventManager.InvokeBarbequePlay();
     }
 
     private void OnWalletButtonClicked()
     {
-        Debug.Log("Wallet Button Clicked");
         EventManager.InvokeWalletOpen();
     }
+    
     private void OnItemEarned(ItemEarnedEventArgs args)
     {
-        genericPopup.Set(args.itemSprite, args.itemType, args.target, args.hasUnSelectItem);
+        playButton.interactable = true;
+        genericPopup.Set(args.itemSprite, args.itemType, args.hasUnSelectItem);
     }
+
     public void Dispose()
     {
         closeButton.onClick.RemoveListener(OnCloseButtonClicked);

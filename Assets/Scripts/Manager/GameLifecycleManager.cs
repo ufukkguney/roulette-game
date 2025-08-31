@@ -1,8 +1,8 @@
-using System;
 using VContainer;
 using VContainer.Unity;
 
-public class GameLifecycleManager : IStartable, IDisposable
+public class GameLifecycleManager : IStartable
+
 {
     [Inject] private HomeScreen homeScreen;
     [Inject] private BarbecueParty barbequeParty;
@@ -10,13 +10,8 @@ public class GameLifecycleManager : IStartable, IDisposable
 
     public void Start()
     {
-        barbequeParty.Initialize();
         homeScreen.Initialize();
-        UnityEngine.Debug.Log("Initializing WalletController");
+        barbequeParty.Initialize();
         walletController.Initialize();
-    }
-    
-    public void Dispose()
-    {
     }
 }

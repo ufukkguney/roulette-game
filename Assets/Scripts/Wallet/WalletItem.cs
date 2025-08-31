@@ -2,9 +2,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-// IPoolable interface eklenmeli
-using System;
-
 public class WalletItem : MonoBehaviour, IPoolable
 {
     [SerializeField] private Image itemImage;
@@ -12,8 +9,6 @@ public class WalletItem : MonoBehaviour, IPoolable
 
     public void ResetPoolObject()
     {
-        // Reset logic for WalletItem
-        // Görsel, miktar, seçili durumu vs. sıfırla
         gameObject.SetActive(false);
         SetItemSprite(null);
         SetAmount(0);
@@ -21,14 +16,12 @@ public class WalletItem : MonoBehaviour, IPoolable
 
     public void SetItemSprite(Sprite sprite)
     {
-        if (itemImage != null)
-            itemImage.sprite = sprite;
+        itemImage.sprite = sprite;
     }
 
     public void SetAmount(int amount)
     {
-        if (amountText != null)
-            amountText.text = amount.ToString();
+        amountText.text = amount.ToString();
     }
 
     public void SetWalletItem(Sprite sprite, int amount)

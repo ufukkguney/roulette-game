@@ -19,20 +19,13 @@ public class WalletView : MonoBehaviour, IDisposable
     }
     private void OpenWalletPanel()
     {
-        if (walletPanel != null)
-        {
-            walletController.SpawnWalletItems(itemContainer);
-
-            walletPanel.gameObject.SetActive(true);
-        }
+        walletController.SpawnWalletItems(itemContainer);
+        walletPanel.gameObject.SetActive(true);
     }
     private void CloseWalletPanel()
     {
-        if (walletPanel != null)
-        {
-            walletController.ReturnAllWalletItemsToPool();
-            walletPanel.gameObject.SetActive(false);
-        }
+        walletController.ReturnAllWalletItemsToPool();
+        walletPanel.gameObject.SetActive(false);
     }
 
     public void Dispose()
