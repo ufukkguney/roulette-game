@@ -20,6 +20,7 @@ public class GameLifetimeScope : LifetimeScope
         builder.Register<GameSequenceManager>(Lifetime.Singleton);
 
         builder.RegisterComponentInHierarchy<HomeScreen>();
+        builder.RegisterComponentInHierarchy<Popup>();
 
         builder.RegisterInstance(rewardSprites);
     }

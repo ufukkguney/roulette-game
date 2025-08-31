@@ -6,11 +6,11 @@ public class ItemSprites : ScriptableObject
     [System.Serializable]
     public struct ItemSpriteEntry
     {
-        public ItemType rewardType;
-        public Sprite sprite;
+        public ItemType RewardType;
+        public Sprite Sprite;
     }
 
-    public ItemSpriteEntry[] rewardSprites;
+    public ItemSpriteEntry[] RewardSprites;
 
     public Sprite GetRandomSpriteForReward()
     {
@@ -26,10 +26,10 @@ public class ItemSprites : ScriptableObject
 
     public Sprite GetSpriteDependsOnType(ItemType rewardType)
     {
-        foreach (var entry in rewardSprites)
+        foreach (var entry in RewardSprites)
         {
-            if (entry.rewardType == rewardType)
-                return entry.sprite;
+            if (entry.RewardType == rewardType)
+                return entry.Sprite;
         }
 
         return null;

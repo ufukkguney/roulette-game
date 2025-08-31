@@ -33,7 +33,6 @@ public class CircleGlow : MonoBehaviour, IPoolable
     public void ResetPoolObject()
     {
         gameObject.SetActive(false);
-        spriteRenderer.DOFade(0f, 0f);
     }
 
 }

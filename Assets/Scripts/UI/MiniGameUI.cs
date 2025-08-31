@@ -50,6 +50,4 @@ public class MiniGameUI : MonoBehaviour
         EventManager.OnItemEarned -= OnItemEarned;
         genericPopup.Dispose();
     }
-
-    
 }

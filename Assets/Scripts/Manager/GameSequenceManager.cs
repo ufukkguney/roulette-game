@@ -6,11 +6,14 @@ using VContainer;
 
 public class GameSequenceManager
 {
+    #region Fields
     private List<Transform> spawnPoints;
     private List<CircleRow> activeRows;
     [Inject] private ItemManager itemManager;
     private WalletController walletController;
+    #endregion
 
+    #region Public API
     public void SetParams(List<Transform> spawnPoints, List<CircleRow> activeRows, WalletController walletController)
     {
         this.spawnPoints = spawnPoints;
@@ -25,6 +28,22 @@ public class GameSequenceManager
         CircleRow selectedRow = GetRandomUnselectedRow(ref repeatCount, spawnCount);
         walletController.AddItem(selectedRow.ItemType);
 
+        yield return RunGlowSequence(spawnCount, repeatCount, selectedRow, delay);
+
+        onSelectComplete?.Invoke();
+    }
+
+    public void Reset()
+    {
+        spawnPoints = null;
+        activeRows = null;
+        walletController = null;
+    }
+    #endregion
+
+    #region Sequence Logic
+    private IEnumerator RunGlowSequence(int spawnCount, int repeatCount, CircleRow selectedRow, float delay)
+    {
         for (int i = 0; i <= repeatCount; i++)
         {
             int index = i % spawnCount;
@@ -35,16 +54,12 @@ public class GameSequenceManager
             Action onGlowComplete = () => itemManager.ReturnCircleGlow(glow);
 
             if (i == repeatCount)
-            {
                 HandleLastGlow(glow, spawnPoints[index], selectedRow, onGlowComplete);
-            }
             else
-            {
                 glow.Select(spawnPoints[index], onGlowComplete);
-            }
+
             yield return new WaitForSeconds(delay);
         }
-        onSelectComplete?.Invoke();
     }
 
     private CircleRow GetRandomUnselectedRow(ref int repeatCount, int spawnCount)
@@ -65,7 +80,9 @@ public class GameSequenceManager
         }
         return selectedRow;
     }
+    #endregion
 
+    #region Event & Utility
     private void HandleLastGlow(CircleGlow glow, Transform target, CircleRow selectedRow, Action onGlowComplete)
     {
         glow.MakeBlink(Constants.BlinkAmount, target, () =>
@@ -80,6 +97,7 @@ public class GameSequenceManager
             onGlowComplete();
         });
     }
+
     private bool HasUnselectedItem()
     {
         foreach (var row in activeRows)
@@ -89,11 +107,5 @@ public class GameSequenceManager
         }
         return false;
     }
-    
-    public void Reset()
-    {
-        spawnPoints = null;
-        activeRows = null;
-        walletController = null;
-    }
+    #endregion
 }

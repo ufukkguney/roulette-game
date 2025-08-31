@@ -1,58 +1,85 @@
+using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 public class Popup : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private Image popupImage;
     [SerializeField] private TextMeshProUGUI popupText;
     [SerializeField] private Button closeButton;
     [SerializeField] private RectTransform target;
+    [SerializeField] private GameObject popupRoot;
     private Vector3 startPopupImagePos;
-    private bool isResetGame;
+    private bool shouldResetGame;
+    [Inject] private ItemFactory itemFactory;
+    #endregion
+
     public void Initialize()
     {
         closeButton.onClick.AddListener(OnCloseButtonClicked);
-        gameObject.SetActive(false);
-
+        popupRoot.SetActive(false);
         startPopupImagePos = popupImage.rectTransform.anchoredPosition;
     }
+
     public void Set(Sprite image, string text, bool hasUnSelectItem)
     {
         popupImage.sprite = image;
-
-        if (!hasUnSelectItem)
-        {
-            popupText.text = "You are winner!";
-            isResetGame = true;
-        }
-        else
-            popupText.text = "You earned a " + text;
-
-
-        gameObject.SetActive(true);
+        popupText.text = hasUnSelectItem ? $"You earned a {text}" : "You are winner!";
+        shouldResetGame = !hasUnSelectItem ? true : false;
+        popupRoot.SetActive(true);
     }
 
     private void OnCloseButtonClicked()
     {
-        popupImage.transform.DOMove(target.position, .75f).SetEase(Ease.InOutBack).OnStart(() =>
+        AnimatePopup(() =>
         {
-            popupImage.rectTransform.DOScale(0.5f, .75f).SetEase(Ease.InOutSine).OnComplete(() =>
-            {
-                popupImage.rectTransform.localScale = Vector3.one;
-            });
-        }).OnComplete(() =>
-        {
-            popupImage.rectTransform.anchoredPosition = startPopupImagePos;
-            gameObject.SetActive(false);
+            PlayParticle();
+            ResetPopup();
+        });
+    }
 
-            if (isResetGame)
+    private void AnimatePopup(System.Action onComplete)
+    {
+        popupImage.transform.DOMove(target.position, .75f)
+            .SetEase(Ease.InOutBack)
+            .OnStart(() =>
+            {
+                popupImage.rectTransform.DOScale(0.5f, .75f)
+                    .SetEase(Ease.InOutSine)
+                    .OnComplete(() => popupImage.rectTransform.localScale = Vector3.one);
+            })
+            .OnComplete(() => onComplete?.Invoke());
+    }
+
+    private void PlayParticle()
+    {
+        var particle = itemFactory.ParticlePool.Get(target);
+        if (particle != null)
+        {
+            particle.Play();
+            StartCoroutine(ReturnParticleAfterPlayCoroutine(particle));
+            if (shouldResetGame)
             {
                 EventManager.InvokeBarbequeClose();
-                isResetGame = false;
+                shouldResetGame = false;
             }
-        });
+        }
+    }
+
+    private void ResetPopup()
+    {
+        popupImage.rectTransform.anchoredPosition = startPopupImagePos;
+        popupRoot.SetActive(false);
+    }
+
+    private IEnumerator ReturnParticleAfterPlayCoroutine(ParticleSystem particle)
+    {
+        yield return new WaitWhile(() => particle.isPlaying);
+        itemFactory.ParticlePool.Return(particle);
     }
 
     public void Dispose()

@@ -11,18 +11,17 @@ public class ItemManager
     private List<Transform> spawnPoints;
     private List<CircleRow> activeRows;
 
+    public void InitializePool()
+    {
+        itemFactory.Initialize(poolParent, spawnPoints.Count);
+    }
+
     public void SetParams(Transform poolParent, List<Transform> spawnPoints, List<CircleRow> activeRows)
     {
         this.poolParent = poolParent;
         this.spawnPoints = spawnPoints;
         this.activeRows = activeRows;
     }
-
-    public void InitializePool()
-    {
-        itemFactory.Initialize(poolParent, spawnPoints.Count);
-    }
-
     public void SpawnAllItems()
     {
         if (spawnPoints.Count == 0 || itemFactory == null) return;
@@ -71,4 +70,5 @@ public class ItemManager
     {
         itemFactory.WalletItemPool.Return(walletItem);
     }
+
 }
