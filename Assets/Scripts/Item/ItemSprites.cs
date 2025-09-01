@@ -12,12 +12,6 @@ public class ItemSprites : ScriptableObject
 
     public ItemSpriteEntry[] RewardSprites;
 
-    public Sprite GetRandomSpriteForReward()
-    {
-        var randomReward = GetRandomReward();
-        return GetSpriteDependsOnType(randomReward);
-    }
-
     public ItemType GetRandomReward()
     {
         var values = System.Enum.GetValues(typeof(ItemType));

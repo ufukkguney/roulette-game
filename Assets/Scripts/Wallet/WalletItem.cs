@@ -7,13 +7,6 @@ public class WalletItem : MonoBehaviour, IPoolable
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI amountText;
 
-    public void ResetPoolObject()
-    {
-        gameObject.SetActive(false);
-        SetItemSprite(null);
-        SetAmount(0);
-    }
-
     public void SetItemSprite(Sprite sprite)
     {
         itemImage.sprite = sprite;
@@ -29,4 +22,12 @@ public class WalletItem : MonoBehaviour, IPoolable
         SetItemSprite(sprite);
         SetAmount(amount);
     }
+    public void ResetPoolObject()
+    {
+        gameObject.SetActive(false);
+        SetItemSprite(null);
+        SetAmount(0);
+    }
+
+    
 }

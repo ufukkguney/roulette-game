@@ -6,14 +6,11 @@ using VContainer;
 
 public class GameSequenceManager
 {
-    #region Fields
     private List<Transform> spawnPoints;
     private List<CircleRow> activeRows;
     [Inject] private ItemManager itemManager;
     private WalletController walletController;
-    #endregion
 
-    #region Public API
     public void SetParams(List<Transform> spawnPoints, List<CircleRow> activeRows, WalletController walletController)
     {
         this.spawnPoints = spawnPoints;
@@ -39,7 +36,6 @@ public class GameSequenceManager
         activeRows = null;
         walletController = null;
     }
-    #endregion
 
     #region Sequence Logic
     private IEnumerator RunGlowSequence(int spawnCount, int repeatCount, CircleRow selectedRow, float delay)
@@ -82,7 +78,6 @@ public class GameSequenceManager
     }
     #endregion
 
-    #region Event & Utility
     private void HandleLastGlow(CircleGlow glow, Transform target, CircleRow selectedRow, Action onGlowComplete)
     {
         glow.MakeBlink(Constants.BlinkAmount, target, () =>
@@ -107,5 +102,4 @@ public class GameSequenceManager
         }
         return false;
     }
-    #endregion
 }

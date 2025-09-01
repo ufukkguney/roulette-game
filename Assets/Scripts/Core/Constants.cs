@@ -16,7 +16,7 @@ public static class Constants
     #region PoolSettings
     internal const int CircleGlowPoolSize = 6;
     internal const int WalletItemPoolSize = 9;
-    public const int PoolInstantiateLimit = 3;
+    public const int PoolInstantiateLimit = 2;
     #endregion
 
     #region GameLogic

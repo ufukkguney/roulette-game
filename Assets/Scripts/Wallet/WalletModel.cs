@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 
+[Serializable]
 public class WalletModel
 {
     private readonly Dictionary<ItemType, int> ownedItems = new();

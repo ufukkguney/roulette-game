@@ -19,7 +19,6 @@ public abstract class MiniGameBase : MonoBehaviour, IDisposable
     {
         itemManager.SetParams(poolParent, spawnPoints, activeRows);
         itemManager.InitializePool();
-        miniGameUI.Initialize();
     }
 
     public virtual void MiniGameOpen()
@@ -27,6 +26,8 @@ public abstract class MiniGameBase : MonoBehaviour, IDisposable
         itemManager.SpawnAllItems();
         sequenceManager.SetParams(spawnPoints, activeRows, walletController);
         transform.gameObject.SetActive(true);
+
+        miniGameUI.Initialize();
     }
 
     public virtual void ResetMiniGame()
@@ -34,6 +35,8 @@ public abstract class MiniGameBase : MonoBehaviour, IDisposable
         itemManager.ReturnAllItemsToPool();
         transform.gameObject.SetActive(false);
         sequenceManager.Reset();
+
+        miniGameUI.Dispose();
     }
 
     public virtual void SelectAndPlaySequence(Action onSelectComplete = null)
@@ -43,6 +46,6 @@ public abstract class MiniGameBase : MonoBehaviour, IDisposable
 
     public virtual void Dispose()
     {
-        miniGameUI.Dispose();
+        ResetMiniGame();
     }
 }

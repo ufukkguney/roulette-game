@@ -12,32 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466dc0b2623e08d4eb7d67bc2f065ae6, type: 3}
   m_Name: ItemSprites
   m_EditorClassIdentifier: 
-  rewardSprites:
-  - rewardType: 0
-    sprite: {fileID: 21300000, guid: 7771bbc921e2100429cd825e56b947e1, type: 3}
-  - rewardType: 1
-    sprite: {fileID: 21300000, guid: 322fee669dbbcc347b8af09b25afbf77, type: 3}
-  - rewardType: 2
-    sprite: {fileID: 21300000, guid: 1771ec64842818c4a83f1725ef4cd92e, type: 3}
-  - rewardType: 3
-    sprite: {fileID: 21300000, guid: fd8541b93b94f5a46926b56f1f431ffa, type: 3}
-  - rewardType: 4
-    sprite: {fileID: 21300000, guid: aadc26930bde2bd41b8e25a5277c3273, type: 3}
-  - rewardType: 5
-    sprite: {fileID: 21300000, guid: 73942f8b9129f0b439e1869688336974, type: 3}
-  - rewardType: 6
-    sprite: {fileID: 21300000, guid: 74eb44bac459ba64db628a12d3869862, type: 3}
-  - rewardType: 7
-    sprite: {fileID: 21300000, guid: 48a8f22919cc4fb4f85a1f195fa44fd0, type: 3}
-  - rewardType: 8
-    sprite: {fileID: 21300000, guid: 8e511a50db6a9814c95be2c956059e3d, type: 3}
-  - rewardType: 9
-    sprite: {fileID: 21300000, guid: 44e03433f62260f49887628284b3f3d6, type: 3}
-  - rewardType: 10
-    sprite: {fileID: 21300000, guid: 3c00730ae7ce0a54f86d19975c253bce, type: 3}
-  - rewardType: 11
-    sprite: {fileID: 21300000, guid: c07d3261851411e4aa2a36d633e1457a, type: 3}
-  - rewardType: 12
-    sprite: {fileID: 21300000, guid: d2d6d070165a2a44db4926f9e1f40310, type: 3}
-  - rewardType: 13
-    sprite: {fileID: 21300000, guid: 7ee10120e4f95f5439dd2e7cd4ebe870, type: 3}
+  RewardSprites:
+  - RewardType: 0
+    Sprite: {fileID: 21300000, guid: 7771bbc921e2100429cd825e56b947e1, type: 3}
+  - RewardType: 1
+    Sprite: {fileID: 21300000, guid: 322fee669dbbcc347b8af09b25afbf77, type: 3}
+  - RewardType: 2
+    Sprite: {fileID: 21300000, guid: 1771ec64842818c4a83f1725ef4cd92e, type: 3}
+  - RewardType: 3
+    Sprite: {fileID: 21300000, guid: fd8541b93b94f5a46926b56f1f431ffa, type: 3}
+  - RewardType: 4
+    Sprite: {fileID: 21300000, guid: aadc26930bde2bd41b8e25a5277c3273, type: 3}
+  - RewardType: 5
+    Sprite: {fileID: 21300000, guid: 73942f8b9129f0b439e1869688336974, type: 3}
+  - RewardType: 6
+    Sprite: {fileID: 21300000, guid: 74eb44bac459ba64db628a12d3869862, type: 3}
+  - RewardType: 7
+    Sprite: {fileID: 21300000, guid: 48a8f22919cc4fb4f85a1f195fa44fd0, type: 3}
+  - RewardType: 8
+    Sprite: {fileID: 21300000, guid: 8e511a50db6a9814c95be2c956059e3d, type: 3}
+  - RewardType: 9
+    Sprite: {fileID: 21300000, guid: 44e03433f62260f49887628284b3f3d6, type: 3}
+  - RewardType: 10
+    Sprite: {fileID: 21300000, guid: 3c00730ae7ce0a54f86d19975c253bce, type: 3}
+  - RewardType: 11
+    Sprite: {fileID: 21300000, guid: c07d3261851411e4aa2a36d633e1457a, type: 3}
+  - RewardType: 12
+    Sprite: {fileID: 21300000, guid: d2d6d070165a2a44db4926f9e1f40310, type: 3}
+  - RewardType: 13
+    Sprite: {fileID: 21300000, guid: 7ee10120e4f95f5439dd2e7cd4ebe870, type: 3}
